@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your ShareWay Journey</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ebf9eb;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        position: relative;
+        margin-bottom: 20px;
+        background-color: #5dd880;
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+        border-top-right-radius: 50px; /* Right corner curvy */
+      }
+
+      .hamburger {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 6px 0; /* Added space between lines */
+      }
+
+      .profile-text {
+        color: #fdfad9; /* Updated color */
+        font-size: 14px;
+        position: absolute;
+        top: 45px; /* Adjusted position to align with hamburger */
+        left: 20px;
+      }
+
+      h1 .shareway {
+        color: #000; /* Black for the rest of the text */
+      }
+
+      h1 .shareway .highlight {
+        color: #15780c; /* Green for "S" and "W" */
+      }
+
+      h1 .black-text {
+        color: #000; /* Black for "Your" and "Journey" */
+      }
+
+      .profile-section {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        position: relative;
+      }
+
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin: 0 auto;
+        position: absolute;
+        top: -50px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 5px solid white;
+      }
+
+      .profile-photo img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .buttons {
+        margin: 60px 0 20px;
+      }
+
+      .buttons button {
+        margin: 0 10px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #fff;
+        color: #5dd880;
+      }
+
+      .user-details {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .option-section {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        align-items: center; /* Center align the options */
+      }
+
+      .option {
+        width: 300px; /* Smaller width */
+        height: 120px; /* Smaller height */
+        background-color: #ebf9eb;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Align items to the left */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D effect */
+        transition: background-color 0.3s;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 10px 0; /* Margin for spacing */
+      }
+
+      .option img {
+        width: 95px; /* Increased size */
+        height: 95px; /* Increased size */
+        margin-right: 10px; /* Space between image and text */
+      }
+
+      .option {
+        /* Existing styles */
+        transition: background-color 0.3s, transform 0.3s; /* Added transform for scaling */
+      }
+
+      .option:hover {
+        box-shadow: 0 0 20px rgba(93, 216, 128, 0.7); /* Glow effect */
+        transform: scale(1.05); /* Enlarge on hover */
+      }
+
+      .option h3 {
+        margin: 0; /* Remove default margin */
+      }
+
+      .profile-container {
+        background-color: #ffffdd;
+        padding: 20px;
+        border-radius: 10px;
+        width: 50%; /* Adjust the width as needed */
+        margin: 0 auto; /* Center the container */
+        position: relative; /* For positioning */
+        top: -30px; /* Adjust this value to touch the green part */
+      }
+
+      @media (max-width: 600px) {
+        .option-section {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        <div class="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="profile-text">My Profile</div>
+        <span class="black-text">Your</span>
+        <span class="shareway">
+          <span class="highlight">S</span>hare
+          <span class="highlight">W</span>ay
+        </span>
+        <span class="black-text">Journey</span>
+      </h1>
+
+      <div class="profile-section">
+        <div class="profile-container">
+          <div class="profile-photo" id="profilePhoto">
+            <img
+              id="profileImage"
+              src="profile.jpg"
+              alt="Profile Photo"
+              style="display: block"
+            />
+          </div>
+          <div class="buttons">
+            <input
+              type="file"
+              id="uploadInput"
+              style="display: none"
+              accept="image/*"
+              onchange="previewImage(event)"
+            />
+            <button onclick="document.getElementById('uploadInput').click();">
+              Upload Photo
+            </button>
+            <button onclick="takePhoto()">Take Photo</button>
+          </div>
+          <div class="user-details">
+            <p>Name: John Doe</p>
+            <p>Email: john@example.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="option-section">
+        <div class="option">
+          <a href="rideMap.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+            <img src="pool.png" alt="Pool Icon" />
+            <h3 style="margin-left: 10px;">Find Your Ride</h3>
+          </a>
+        </div>
+        <div class="option">
+          <a href="taximap.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+            <img src="solo.png" alt="Solo Icon" />
+            <h3 style="margin-left: 10px;">Travel Solo / Taxi</h3>
+          </a>
+        </div>
+      </div>
+      
+      
+
+    <script>
+      function previewImage(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function () {
+          const imgElement = document.getElementById("profileImage");
+          imgElement.src = reader.result;
+          imgElement.style.display = "block";
+          document.getElementById("profilePhoto").appendChild(imgElement);
+        };
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      }
+
+      async function takePhoto() {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+          });
+          const video = document.createElement("video");
+          video.srcObject = stream;
+          video.play();
+
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+
+          const modal = document.createElement("div");
+          modal.style.position = "fixed";
+          modal.style.top = "0";
+          modal.style.left = "0";
+          modal.style.width = "100%";
+          modal.style.height = "100%";
+          modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+          modal.style.display = "flex";
+          modal.style.justifyContent = "center";
+          modal.style.alignItems = "center";
+
+          const closeModal = () => {
+            stream.getTracks().forEach((track) => track.stop());
+            modal.remove();
+          };
+
+          const captureButton = document.createElement("button");
+          captureButton.innerText = "Capture";
+          captureButton.style.padding = "10px";
+          captureButton.style.margin = "10px";
+          captureButton.style.cursor = "pointer";
+          captureButton.style.backgroundColor = "#5DD800";
+          captureButton.style.color = "white";
+
+          captureButton.onclick = () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0);
+            const imgElement = document.getElementById("profileImage");
+            imgElement.src = canvas.toDataURL();
+            imgElement.style.display = "block";
+            document.getElementById("profilePhoto").appendChild(imgElement);
+            closeModal();
+          };
+
+          modal.appendChild(video);
+          modal.appendChild(captureButton);
+          document.body.appendChild(modal);
+        } catch (error) {
+          alert("Access denied or no camera found.");
+        }
+      }
+    </script>
+  </body>
+</html>

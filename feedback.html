@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShareWay Rating</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ebf9eb;
+      }
+
+      /* Header styling */
+      .header {
+        background-color: #5dd880;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: -30px;
+        height: 40px;
+      }
+      .user-info {
+        display: flex;
+        flex-direction: column; /* Stack the image and name vertically */
+        align-items: center; /* Center-align the items */
+      }
+
+      .user-name {
+        margin-top: 5px; /* Space between the image and the name */
+        font-size: 16px; /* Adjust font size as needed */
+        color: #000; /* Adjust text color if needed */
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      .shareway {
+        font-family: "Samsita", cursive, bold;
+        font-size: xx-large;
+      }
+
+      .highlight {
+        color: #15780c; /* Color for "S" and "W" */
+      }
+
+      /* User profile image */
+      .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 18px;
+      }
+
+      /* Rating container */
+      .rating-container {
+        background-color: white;
+        max-width: 600px;
+        margin: 20px auto; /* Center the container */
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 0; /* Remove top margin for attachment */
+      }
+
+      /* Image at the top of the box */
+      .feed-image {
+        width: 300px; /* Set width */
+        height: 200px; /* Set height */
+        display: block; /* Center the image */
+        margin-left: auto; /* Center the image */
+        margin-right: auto; /* Center the image */
+        margin-bottom: 0; /* No margin below to touch the box */
+        margin-top: 0; /* Remove space between header and image */
+      }
+
+      /* Star rating styles */
+      .rating {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        position: relative; /* Required for positioning tooltip */
+      }
+
+      .star {
+        color: #ede8dc; /* Initial color */
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .star:hover {
+        color: #fccd2a; /* Color when hovered */
+      }
+
+      /* Tooltip styling */
+      .tooltip {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        top: 40px; /* Position below the stars */
+        left: 0; /* Dynamically set left value */
+        transform: translateX(-50%); /* Adjust for center */
+        z-index: 1; /* Ensure it appears above other elements */
+      }
+
+      /* Comment box styling */
+      .comment-box {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .comment-input {
+        width: 100%;
+        max-width: 100%; /* Full width for the comment box */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+        min-height: 100px; /* Minimum height for the comment box */
+        margin-top: 10px;
+      }
+
+      .submit-btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #5dd880;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit-btn:hover {
+        background-color: #4cbf6e; /* Darker shade for hover effect */
+      }
+
+      /* Tick mark styling */
+      .tick {
+        display: none; /* Initially hidden */
+        font-size: 40px;
+        color: #5dd880; /* Tick color */
+        margin-top: 10px;
+      }
+
+      /* Pop message styling */
+      .pop-message {
+        display: none; /* Initially hidden */
+        margin-top: 10px;
+        color: #5dd880; /* Color of the message */
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header section with profile image -->
+    <div class="header">
+      <span class="shareway">
+        <span class="highlight">S</span>hare<span class="highlight">W</span>ay
+      </span>
+
+      <div class="user-info">
+        <img src="user.png" alt="User Photo" class="profile-pic" />
+        <p class="user-name">John Doe</p>
+        <!-- Replace with dynamic name if needed -->
+      </div>
+    </div>
+
+    <!-- Feed image at the top -->
+    <img src="feed.png" alt="Feedback Image" class="feed-image" />
+
+    <!-- Rating container -->
+    <div class="rating-container">
+      <h2>Rate Your Ride Experience</h2>
+      <p>How would you rate your overall experience?</p>
+
+      <!-- Star rating -->
+      <div class="rating">
+        <span
+          class="star"
+          title="Terrible"
+          onclick="rate(1)"
+          onmouseover="showTooltip(event, 'Terrible')"
+          >★</span
+        >
+        <span
+          class="star"
+          title="Bad"
+          onclick="rate(2)"
+          onmouseover="showTooltip(event, 'Bad')"
+          >★</span
+        >
+        <span
+          class="star"
+          title="Okay"
+          onclick="rate(3)"
+          onmouseover="showTooltip(event, 'Okay')"
+          >★</span
+        >
+        <span
+          class="star"
+          title="Good"
+          onclick="rate(4)"
+          onmouseover="showTooltip(event, 'Good')"
+          >★</span
+        >
+        <span
+          class="star"
+          title="Excellent"
+          onclick="rate(5)"
+          onmouseover="showTooltip(event, 'Excellent')"
+          >★</span
+        >
+        <div class="tooltip" id="tooltip"></div>
+        <!-- Tooltip element -->
+      </div>
+
+      <!-- Comment box section -->
+      <div class="comment-box">
+        <textarea
+          class="comment-input"
+          placeholder="Write your comments here..."
+        ></textarea>
+        <button class="submit-btn" onclick="submitFeedback()">
+          Send Feedback
+        </button>
+        <span class="tick">✔️</span>
+        <div class="pop-message">Feedback sent!</div>
+      </div>
+    </div>
+
+    <script>
+      function rate(stars) {
+        const starElements = document.querySelectorAll(".star");
+        starElements.forEach((star, index) => {
+          if (index < stars) {
+            star.style.color = "#FCCD2A"; // Fill stars
+          } else {
+            star.style.color = "#EDE8DC"; // Empty stars
+          }
+        });
+      }
+
+      function showTooltip(event, message) {
+        const tooltip = document.getElementById("tooltip");
+        const star = event.target;
+
+        tooltip.innerText = message; // Set tooltip text
+        tooltip.style.display = "block"; // Show tooltip
+
+        // Position the tooltip relative to the respective star
+        const starRect = star.getBoundingClientRect();
+        const containerRect = document
+          .querySelector(".rating")
+          .getBoundingClientRect();
+
+        tooltip.style.left = `${
+          starRect.left - containerRect.left + starRect.width / 2
+        }px`; // Position horizontally below the star
+        tooltip.style.top = `${starRect.bottom - containerRect.top + 10}px`; // 10px below the star
+      }
+
+      // Hide tooltip when not hovering over the stars
+      document.querySelectorAll(".star").forEach((star) => {
+        star.addEventListener("mouseout", () => {
+          const tooltip = document.getElementById("tooltip");
+          tooltip.style.display = "none"; // Hide tooltip
+        });
+      });
+
+      function submitFeedback() {
+        const tick = document.querySelector(".tick");
+        const popMessage = document.querySelector(".pop-message");
+        tick.style.display = "block"; // Show the tick mark
+        popMessage.style.display = "block"; // Show feedback sent message
+
+        // Optionally reset the feedback form after submission
+        document.querySelector(".comment-input").value = "";
+        // Reset star ratings if needed
+        const starElements = document.querySelectorAll(".star");
+        starElements.forEach((star) => (star.style.color = "#EDE8DC")); // Reset color
+
+        // Hide pop message after 3 seconds
+        setTimeout(() => {
+          popMessage.style.display = "none";
+          tick.style.display = "none"; // Hide tick mark after feedback sent
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

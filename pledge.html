@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShareWay Rider's Pledge</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Samsita:wght@700&display=swap");
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #ebf9eb; /* Changed background to green */
+      }
+
+      .container {
+        background-color: white;
+        max-width: 900px;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: rgb(
+          0,
+          0,
+          0
+        ); /* Changed text color to black for better contrast */
+        margin-bottom: 30px;
+        background-color: #5dd880; /* Background color */
+        padding: 15px; /* Add padding for better appearance */
+        border-radius: 10px; /* Optional: rounded corners */
+        font-family: "Samsita", cursive;
+      }
+
+      .shareway {
+        font-family: "Samsita", cursive;
+      }
+
+      .highlight {
+        color: #15780c; /* Color for "S" and "W" */
+      }
+
+      .section {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 30px;
+        align-items: center;
+        color: rgb(58, 58, 58);
+      }
+
+      .section img {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+      }
+
+      .section p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 0;
+        color: grey;
+      }
+
+      .section b {
+        font-size: 20px;
+      }
+
+      .section:hover {
+        transform: scale(1.05); /* Scale up by 5% */
+      }
+
+      .divider {
+        border-bottom: 3px dotted #ccc;
+        margin: 30px 0;
+      }
+
+      .divider-3d {
+        border-bottom: 1px solid #cdcaca;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2),
+          0 -8px 15px rgba(48, 48, 48, 0.7); /* 3D effect with glow on top */
+        margin: 10px 0;
+      }
+
+      .agree-btn {
+        display: block;
+        width: 43%; /* Adjusted width */
+        padding: 15px;
+        background-color: #5dd880;
+        color: white;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        margin: 0 auto; /* Centers the button */
+        border-radius: 20px; /* Curvy ends */
+        transition: background-color 0.3s;
+      }
+
+      .agree-btn:hover {
+        background-color: #4cbf6e; /* Slightly darker shade for hover effect */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3),
+          0 0 25px rgba(93, 216, 128, 0.6); /* Glowing effect */
+      }
+
+      a {
+        text-decoration: none; /* Removes the underline */
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .section img {
+          margin: 0 0 20px 0;
+          width: 150px; /* Increased width */
+          height: 150px; /* Increased height */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        <span class="shareway">
+          <span class="highlight">S</span>hare<span class="highlight">W</span
+          >ay </span
+        >Rider's Pledge
+      </h1>
+
+      <div class="section">
+        <img src="respect.jpg" alt="Respect Image" />
+        <div>
+          <b>Respect Each Other</b>
+          <p>
+            I will respect fellow riders and value their time & space. I would
+            never treat them as Driver/Passenger
+          </p>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="section">
+        <img src="enviro.jpg" alt="Environment Image" />
+        <div>
+          <b>Be Environment Friendly</b>
+          <p>
+            I will carpool regularly and be the reason for at least one less car
+            on the road.
+          </p>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="section">
+        <img src="good.jpg" alt="Spread Goodness Image" />
+        <div>
+          <b>Spread Goodness</b>
+          <p>
+            I will encourage others to start carpooling to make the city greener
+            and pollution free.
+          </p>
+        </div>
+      </div>
+      <div class="divider divider-3d"></div>
+
+      <a href="login.html">
+        <button class="agree-btn">I Agree</button>
+      </a>
+    </div>
+  </body>
+</html>

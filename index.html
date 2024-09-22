@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shareway</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #E3FDF5 0%, #FFE6FA 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #5DD880;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .title {
+            font-size: 72px;
+            font-weight: 900;
+            text-align: center;
+            margin-top: 120px;
+            letter-spacing: 2px;
+            color: #333;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+            color: #333;
+            margin-top: -15px;
+        }
+        .highlight-text {
+            color: #006400;
+            font-weight: 700;
+        }
+        .ride-sharing-info {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            color: #006400;
+            font-family: 'Poppins', sans-serif;
+        }
+        .image-container img {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 0;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+        .rectangle {
+            background-color: #5DD880;
+            width: 100%;
+            height: 40%;
+            margin-top: 30px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .input-container {
+            background-color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .input-container input {
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        .input-container input:focus {
+            border-color: #5DD880;
+        }
+        .input-container button {
+            background-color: #5DD880;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-left: 15px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .input-container button:hover {
+            background-color: #45c270;
+            transform: scale(1.05);
+        }
+        .second-page {
+            width: 100%;
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+        .second-page h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            color: #006400;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .process-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .process-item {
+            text-align: center;
+            max-width: 250px;
+        }
+        .process-item img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .process-item img:hover {
+            transform: scale(1.05);
+        }
+        .process-item h3 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .process-item button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #006400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .process-item button:hover {
+            background-color: #004d00;
+        }
+
+        /* New Section Styles */
+        .join-driver-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+            background-color: #f5f5f5;
+            margin-top: 50px;
+        }
+        .join-driver-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+        .join-driver-image img {
+            width: 80%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .join-driver-image img:hover {
+            transform: scale(1.05);
+        }
+        .join-driver-text {
+            flex: 1;
+            padding: 0 20px;
+        }
+        .join-driver-text h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #006400;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+        .join-driver-text ul {
+            list-style: disc;
+            padding-left: 20px;
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .join-driver-text ul li {
+            margin-bottom: 10px;
+        }
+        .join-driver-text button {
+            background-color: #5DD880;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .join-driver-text button:hover {
+            background-color: #45c270;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 48px;
+                margin-top: 80px;
+            }
+            .subtitle {
+                font-size: 18px;
+            }
+            .rectangle {
+                height: 35%;
+            }
+            .input-container {
+                flex-direction: column;
+            }
+            .input-container input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .input-container button {
+                width: 100%;
+                margin-left: 0;
+            }
+            .process-container {
+                flex-direction: column;
+            }
+            .process-item img {
+                width: 150px;
+                height: 150px;
+            }
+            .join-driver-section {
+                flex-direction: column;
+            }
+            .join-driver-image {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Shareway</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#process">Process</a>
+            <a href="#help">Help</a>
+        </div>
+    </div>
+
+    <!-- Title Section -->
+    <div class="title">
+        <span class="s">S</span><span>hare</span><span class="w">W</span><span>ay</span>
+    </div>
+    <div class="subtitle">Safe. Reliable. Economical</div>
+
+    <!-- Ride Sharing Info -->
+    <div class="ride-sharing-info">
+        Ride Sharing can save time and money
+    </div>
+
+    <!-- Image Section -->
+    <div class="image-container">
+        <img src="https://png.pngtree.com/png-vector/20220519/ourmid/pngtree-man-orders-taxi-via-smartphone-png-image_4677780.png" alt="Man ordering ride">
+    </div>
+
+    <!-- Input Section -->
+    <div class="rectangle">
+        <div class="input-container">
+            <input type="text" placeholder="Enter Your Phone Number">
+            <a href="pledge.html">
+                <button>Submit</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Second Page Content -->
+    <div class="second-page">
+        <h2>Our Working Process</h2>
+        <div class="process-container">
+            <div class="process-item">
+                <img src="https://i.pinimg.com/564x/eb/dd/5a/ebdd5a973771d2c8c865d464450871b3.jpg" alt="Set Your Destination">
+                <h3>Set Your Destination</h3>
+                <button>Click to Know More</button>
+            </div>
+            <div class="process-item">
+                <img src="https://i.pinimg.com/564x/48/e5/c5/48e5c5032b399146c6298dc542d1782a.jpg" alt="Start Your Ride">
+                <h3>Start Your Ride</h3>
+                <button>Click to Know More</button>
+            </div>
+            <div class="process-item">
+                <img src="https://i.pinimg.com/564x/7e/2a/ae/7e2aaeba8bcfad6521a6c81238216e23.jpg" alt="Carpooling">
+                <h3>Carpooling</h3>
+                <button>Click to Know More</button>
+            </div>
+            <div class="process-item">
+                <img src="https://i.pinimg.com/564x/32/a8/71/32a871cb22732793d0fd0e5ab1ed8e26.jpg" alt="Give a Rating">
+                <h3>Give a Rating</h3>
+                <button>Click to Know More</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join as a Driver Section -->
+    <div class="join-driver-section">
+        <div class="join-driver-image">
+            <img src="https://i.pinimg.com/564x/0e/e8/33/0ee83305fc7d2b3c8015cfb21d61639b.jpg" alt="Join as Driver">
+        </div>
+        <div class="join-driver-text">
+            <h2>JOIN AS A DRIVER</h2>
+            <ul>
+                <li>Be at least 18 years old</li>
+                <li>Have a valid driver's license</li>
+                <li>Have proof of residency</li>
+                <li>Have vehicle documents like insurance and registration certificate</li>
+                <li>Pass a background check</li>
+                <li>Visit a Partner Seva Kendra to submit documents and photos</li>
+            </ul>
+            <button>Join Us</button>
+        </div>
+    </div>
+
+</body>
+</html>  
